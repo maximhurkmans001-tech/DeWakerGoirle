@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
+import ToegangsBalk from "./components/ToegangsBalk.jsx";
 import Home from "./pages/Home.jsx";
 import Nieuws from "./pages/Nieuws.jsx";
 import Wonen from "./pages/Wonen.jsx";
@@ -42,6 +43,7 @@ export default function App() {
   return (
     <>
       <a href="#hoofdinhoud" className="skip-link">Ga naar hoofdinhoud</a>
+      <ToegangsBalk />
       <Header page={page} goTo={goTo} />
       <main id="hoofdinhoud">
         <Pagina goTo={goTo} initialFilter={newsFilter} />

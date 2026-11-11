@@ -1,0 +1,8 @@
+const emailForm=document.querySelector('#email-form'),codeForm=document.querySelector('#code-form'),status=document.querySelector('#status');
+let email='';
+async function send(path,data){const response=await fetch(path,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});const result=await response.json();if(!response.ok)throw new Error(result.error||'Het verzoek is niet gelukt.');return result;}
+function message(text,error=false){status.textContent=text;status.classList.toggle('error',error);}
+async function submit(form,fn){const button=form.querySelector('[type=submit]');button.disabled=true;message('Even geduld…');try{await fn();}catch(error){message(error.message||'Verbinding niet beschikbaar. Probeer het opnieuw.',true);}finally{button.disabled=false;}}
+emailForm.addEventListener('submit',event=>{event.preventDefault();submit(emailForm,async()=>{email=document.querySelector('#email').value.trim().toLowerCase();const result=await send('/api/login',{email});document.querySelector('#sent-to').textContent='Gebruik de code voor '+email;emailForm.hidden=true;codeForm.hidden=false;message(result.message);document.querySelector('#code').focus();});});
+codeForm.addEventListener('submit',event=>{event.preventDefault();submit(codeForm,async()=>{const result=await send('/api/verify',{email,code:document.querySelector('#code').value.trim()});window.location.assign(result.redirect);});});
+document.querySelector('#restart').addEventListener('click',()=>{codeForm.hidden=true;emailForm.hidden=false;document.querySelector('#code').value='';message('');document.querySelector('#email').focus();});

@@ -1,2 +1,8 @@
-node_modules
-dist
+.env*
+!.env.example
+node_modules/
+dist/
+.vercel/
+.portaal-build/
+# Gegenereerd door npm run build; bevat het bewonersgedeelte
+private/

@@ -1,0 +1,9 @@
+{
+  "$schema":"https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand":"npm run build",
+  "outputDirectory":"dist",
+  "functions":{"api/portal.js":{"includeFiles":"private/**"}},
+  "rewrites":[{"source":"/bewoners","destination":"/api/portal"},{"source":"/inloggen","destination":"/login.html"}],
+  "headers":[{"source":"/(.*)","headers":[{"key":"X-Content-Type-Options","value":"nosniff"},{"key":"Referrer-Policy","value":"strict-origin-when-cross-origin"},{"key":"X-Frame-Options","value":"DENY"}]}]
+}
