@@ -16,7 +16,7 @@ export default function Nieuws({ initialFilter }) {
     return NIEUWSBERICHTEN
       .filter((b) => filter === "Alle berichten" || b.categorie === filter)
       .filter((b) => (b.titel + " " + b.samenvatting).toLowerCase().includes(zoek.toLowerCase()))
-      .sort((a, b) => (a.datum < b.datum ? 1 : -1));
+      .sort((a, b) => b.datum.localeCompare(a.datum) || ((b.prioriteit || 0) - (a.prioriteit || 0)) || a.id.localeCompare(b.id));
   }, [filter, zoek]);
 
   return (

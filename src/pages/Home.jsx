@@ -12,7 +12,7 @@ import { BELANGRIJKE_MEDEDELING } from "../data/mededeling.js";
 import { formatDatumKort } from "../utils/helpers.js";
 
 export default function Home({ goTo }) {
-  const laatsteNieuws = [...NIEUWSBERICHTEN].sort((a, b) => (a.datum < b.datum ? 1 : -1)).slice(0, 4);
+  const laatsteNieuws = [...NIEUWSBERICHTEN].sort((a, b) => b.datum.localeCompare(a.datum) || ((b.prioriteit || 0) - (a.prioriteit || 0)) || a.id.localeCompare(b.id)).slice(0, 4);
   const komendeActiviteiten = [...ACTIVITEITEN].sort((a, b) => (a.datum > b.datum ? 1 : -1)).slice(0, 3);
   const [openBericht, setOpenBericht] = useState(null);
 
@@ -35,7 +35,7 @@ export default function Home({ goTo }) {
       </section>
 
       {BELANGRIJKE_MEDEDELING.enabled && (
-        <div className="wrap section-tight"><NoticeBanner /></div>
+        <div className="wrap section-tight"><NoticeBanner goTo={goTo} /></div>
       )}
 
       <section className="section">

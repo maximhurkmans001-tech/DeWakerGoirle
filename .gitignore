@@ -6,3 +6,6 @@ dist/
 .portaal-build/
 # Gegenereerd door npm run build; bevat het bewonersgedeelte
 private/
+
+# Lokale reservekopieën van de inhoudsupdate
+.waker-backups/

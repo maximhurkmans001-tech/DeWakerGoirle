@@ -1,8 +1,6 @@
-/* Belangrijke mededeling bovenaan de homepage. */
-
-// Zet "enabled" op false om de belangrijke mededeling op de homepage te verbergen.
+/* Belangrijke mededeling op de homepage van het bewonersgedeelte. */
 export const BELANGRIJKE_MEDEDELING = {
-  enabled: true,
-  titel: "Tijdelijk werkzaamheden bij de hoofdingang",
-  tekst: "Van 22 t/m 26 september is de hoofdingang aan de Kalverstraat tijdelijk lastiger bereikbaar in verband met herinrichting van de stoep. Gebruik zo mogelijk de zij-ingang. (Voorbeeldmededeling)",
+  "enabled": true,
+  "titel": "Let op: werkzaamheden rondom De Waker",
+  "tekst": "Er wordt gewerkt aan wegen en voorzieningen in het centrum van Goirle."
 };

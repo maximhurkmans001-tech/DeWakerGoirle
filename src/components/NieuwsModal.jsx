@@ -16,7 +16,17 @@ export default function NieuwsModal({ bericht, onClose }) {
         <h2 id="modal-titel" style={{ marginTop: 10 }}>{bericht.titel}</h2>
         <div className="news-meta" style={{ marginBottom: 14 }}><Icon name="calendar" size={14} />{formatDatumLang(bericht.datum)}</div>
         <Photo label={"Foto: " + bericht.categorie} className="section-tight" />
-        <p style={{ marginTop: 16 }}>{bericht.tekst}</p>
+        <p style={{ marginTop: 16, whiteSpace: "pre-line" }}>{bericht.tekst}</p>
+        {/* WAKER_BRONLINKS_20261112 */}
+        {bericht.bijgewerkt && <p className="news-meta">Laatst gecontroleerd: {formatDatumLang(bericht.bijgewerkt)}</p>}
+        {bericht.bronnen?.length > 0 && (
+          <section aria-label="Bronnen bij dit nieuwsbericht">
+            <h3 style={{ fontSize: "1rem", marginTop: 18 }}>Bronnen en actuele informatie</h3>
+            <ul style={{ paddingLeft: 22 }}>
+              {bericht.bronnen.map((bron) => <li key={bron.url}><ExternalA href={bron.url}>{bron.label}</ExternalA></li>)}
+            </ul>
+          </section>
+        )}
         {bericht.werk && (
           <div className="card-flat" style={{ padding: 16, marginBlock: 16 }}>
             <h3 style={{ fontSize: "1rem" }}>Details werkzaamheden</h3>
