@@ -101,29 +101,3 @@ export const ACTIVITEITEN = [
   );
 }
 
-Hierdoor blijven toekomstige bewonersactiviteiten behouden. Verlopen activiteiten verdwijnen bij het opnieuw laden uit het overzicht.
-
-2. Open src → components → ActiviteitRow.jsx
-
-Vervang in dit bestand de volledige inhoud met onderstaande code. Externe evenementen krijgen hiermee een knop ‘Meer informatie’ naar de organisator.
-import { useState } from "react";
-import Icon from "./Icon.jsx";
-import { formatDatumKort } from "../utils/helpers.js";
-
-export default function ActiviteitRow({ activiteit }) {
-  const [interesse, setInteresse] = useState(false);
-  const [aantal, setAantal] = useState(activiteit.interesseStart ?? 0);
-  const d = formatDatumKort(activiteit.datum);
-  const extern = Boolean(activiteit.bron);
-
-  function toggleInteresse() {
-    setAantal(n => interesse ? n - 1 : n + 1);
-    setInteresse(v => !v);
-  }
-
-  return (
-    <div className="activity-row">
-      <div className="activity-date">
-        <span className="day">{d.dag}</span>
-        <span className="mon">{d.maand}</span>
-      </div>
