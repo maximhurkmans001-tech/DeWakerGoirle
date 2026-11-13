@@ -1,0 +1,15 @@
+/* Nieuwsfoto's: afgeschermde stijlen voor kaarten en nieuwsvenster. */
+.nieuwsfoto{margin:0;width:100%;}
+.nieuwsfoto__beeld{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:16/9;border-radius:16px;background:#e7e8df;border:1px solid var(--line,#ddd);}
+.nieuwsfoto__foto{display:block;width:100%;height:100%;object-fit:cover;object-position:center;}
+.nieuwsfoto__beeld::after{content:"";position:absolute;inset:48% 0 0;background:linear-gradient(transparent,rgba(13,32,40,.65));pointer-events:none;}
+.nieuwsfoto__logo{position:absolute;top:10px;right:10px;width:86px;padding:7px;border-radius:10px;background:#f8f8f8;box-shadow:0 2px 10px #0002;z-index:2;}
+.nieuwsfoto__logo img{display:block;width:100%;height:auto;}
+.nieuwsfoto__label{position:absolute;left:13px;bottom:12px;right:13px;z-index:1;color:white;font-size:.78rem;font-weight:700;letter-spacing:.02em;text-shadow:0 1px 3px #0007;}
+.nieuwsfoto__toelichting{font-size:.78rem;color:var(--muted,#53636b);margin:7px 0;line-height:1.5;}
+.nieuwsfoto__bron{font-size:.7rem;color:var(--muted,#53636b);margin-top:5px;line-height:1.5;}
+.nieuwsfoto__bron summary{cursor:pointer;}
+.nieuwsfoto__bron p{margin:5px 0;}
+.nieuwsfoto__bron a{color:inherit;text-decoration:underline;}
+.nieuwsfoto__fallback{display:flex;height:100%;align-items:center;justify-content:center;padding:25px;color:#1b3641;text-align:center;}
+@media(max-width:480px){.nieuwsfoto__logo{width:72px;}.nieuwsfoto__beeld{border-radius:12px;}}

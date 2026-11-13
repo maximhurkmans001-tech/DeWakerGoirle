@@ -1,12 +1,12 @@
+import NieuwsFoto from "./NieuwsFoto.jsx";
 import Icon from "./Icon.jsx";
-import Photo from "./Photo.jsx";
 import Chip from "./Chip.jsx";
 import { formatDatumLang } from "../utils/helpers.js";
 
 export default function NieuwsKaart({ bericht, onOpen }) {
   return (
     <article className="card news-card">
-      <Photo label={"Foto: " + bericht.categorie} />
+      <NieuwsFoto bericht={bericht} />
       <Chip>{bericht.categorie}</Chip>
       <h3 style={{ margin: "2px 0 0" }}>{bericht.titel}</h3>
       <div className="news-meta"><Icon name="calendar" size={14} />{formatDatumLang(bericht.datum)}</div>

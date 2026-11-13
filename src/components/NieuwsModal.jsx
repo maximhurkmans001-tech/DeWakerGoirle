@@ -1,5 +1,5 @@
+import NieuwsFoto from "./NieuwsFoto.jsx";
 import Icon from "./Icon.jsx";
-import Photo from "./Photo.jsx";
 import Chip from "./Chip.jsx";
 import ExternalA from "./ExternalA.jsx";
 import { VVE_BESTUUR_EMAIL } from "../data/contact.js";
@@ -15,7 +15,7 @@ export default function NieuwsModal({ bericht, onClose }) {
         <Chip>{bericht.categorie}</Chip>
         <h2 id="modal-titel" style={{ marginTop: 10 }}>{bericht.titel}</h2>
         <div className="news-meta" style={{ marginBottom: 14 }}><Icon name="calendar" size={14} />{formatDatumLang(bericht.datum)}</div>
-        <Photo label={"Foto: " + bericht.categorie} className="section-tight" />
+        <NieuwsFoto bericht={bericht} className="section-tight" uitgebreid />
         <p style={{ marginTop: 16, whiteSpace: "pre-line" }}>{bericht.tekst}</p>
         {/* WAKER_BRONLINKS_20261112 */}
         {bericht.bijgewerkt && <p className="news-meta">Laatst gecontroleerd: {formatDatumLang(bericht.bijgewerkt)}</p>}
