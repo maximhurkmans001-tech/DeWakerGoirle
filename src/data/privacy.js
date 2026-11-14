@@ -7,7 +7,7 @@ export const PRIVACY_PUNTEN = [
   "Geen vertrouwelijke VvE-documenten in het openbare gedeelte van de website.",
   "Geen onnodige tracking en geen advertentiecookies.",
   "Externe links worden duidelijk herkenbaar gemaakt en openen in een nieuw tabblad.",
-  "Formulieren die persoonsgegevens verwerken worden pas toegevoegd wanneer de verwerking en beveiliging goed geregeld zijn.",
+  "Het contactformulier is alleen beschikbaar voor ingelogde, actieve bewoners. Berichten gaan per e-mail naar het VvE-bestuur.",
 ];
 
 export const TOEGANKELIJKHEID_PUNTEN = [

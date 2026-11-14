@@ -65,7 +65,7 @@ export default function Home({ goTo }) {
           </div>
           <div className="grid" style={{ marginTop: 24 }}>
             {komendeActiviteiten.map((a) => {
-              const d = formatDatumKort(a.datum);
+              const d = a.voorstel ? { dag: "?", maand: "idee" } : formatDatumKort(a.datum);
               return (
                 <div className="activity-row" key={a.id}>
                   <div className="activity-date"><span className="day">{d.dag}</span><span className="mon">{d.maand}</span></div>

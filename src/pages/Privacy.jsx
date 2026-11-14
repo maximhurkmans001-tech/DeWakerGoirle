@@ -24,8 +24,11 @@ export default function Privacy() {
 
       <div className="card-flat" style={{ padding: 20, marginTop: 24 }}>
         <p style={{ margin: 0 }}>
-          Dit is een werkend prototype met voorbeeldinhoud. Er wordt op dit moment geen enkele
-          persoonsgegeven van bewoners verzameld of opgeslagen door deze website.
+          Het contactformulier verstuurt uw naam, optioneel appartementnummer, onderwerp en bericht
+          naar het VvE-bestuur via Gmail. Het antwoordadres is het e-mailadres waarmee u bent ingelogd.
+          De berichtinhoud wordt niet in de website-database opgeslagen; het bestuur ontvangt deze
+          in de mailbox. Voor de verzendlimiet bewaart Supabase alleen een gebruikersnummer en
+          tijdstip. Registraties ouder dan één dag worden bij een volgende verzendpoging opgeruimd.
         </p>
       </div>
 

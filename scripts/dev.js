@@ -1,3 +1,4 @@
+import {createContactHandler} from '../lib/contact-handler.js';
 import http from 'node:http';import {readFile} from 'node:fs/promises';import {resolve,extname,sep} from 'node:path';import {createHandler} from '../lib/handler.js';
 const root=resolve('public');
 http.createServer(async(req,res)=>{
@@ -5,6 +6,7 @@ http.createServer(async(req,res)=>{
  const path=url.pathname==='/bewoners'?'/api/portal':url.pathname;
  if(path.startsWith('/api/')){
   const action=path.slice(5);
+  if(action==='contact')return createContactHandler()(req,res);
   if(!['login','verify','logout','portal','session'].includes(action)){res.writeHead(404);return res.end();}
   return createHandler(action)(req,res);
  }

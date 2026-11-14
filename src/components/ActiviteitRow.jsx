@@ -1,8 +1,9 @@
+import NieuwjaarsVoorstel from "./NieuwjaarsVoorstel.jsx";
 import { useState } from "react";
 import Icon from "./Icon.jsx";
 import { formatDatumKort } from "../utils/helpers.js";
 
-export default function ActiviteitRow({ activiteit }) {
+function ActiviteitStandaard({ activiteit }) {
   const [interesse, setInteresse] = useState(false);
   const [aantal, setAantal] = useState(activiteit.interesseStart ?? 0);
   const d = formatDatumKort(activiteit.datum);
@@ -77,4 +78,8 @@ export default function ActiviteitRow({ activiteit }) {
       )}
     </div>
   );
+}
+
+export default function ActiviteitRow(props) {
+  return props.activiteit.voorstel ? <NieuwjaarsVoorstel /> : <ActiviteitStandaard {...props} />;
 }

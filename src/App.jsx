@@ -30,6 +30,36 @@ const PAGINAS = {
 export default function App() {
   const [page, setPage] = useState("home");
   const [newsFilter, setNewsFilter] = useState(null);
+  const [contactOnderwerp, setContactOnderwerp] = useState("Algemene vraag");
+  const [contactBericht, setContactBericht] = useState("");
+  // WAKER_NIEUWJAARSVOORSTEL: belangstelling via het bestaande formulier.
+  useEffect(() => {
+    function openVoorstel(event) {
+      setContactOnderwerp(event.detail.onderwerp);
+      setContactBericht(event.detail.bericht);
+      setPage("contact");
+    }
+    window.addEventListener("waker-contactvoorstel", openVoorstel);
+    return () => window.removeEventListener("waker-contactvoorstel", openVoorstel);
+  }, []);
+
+
+  // WAKER_CONTACTFORMULIER: bestuurslinks in het bewonersportaal openen het formulier.
+  useEffect(() => {
+    function openContact(event) {
+      const a = event.target.closest?.("a[href]");
+      if (!a || a.hasAttribute("data-direct-mail") || !a.getAttribute("href")?.startsWith("mailto:")) return;
+      const link = new URL(a.href);
+      if (decodeURIComponent(link.pathname).toLowerCase() !== "bestuurvvedewaker@gmail.com") return;
+      event.preventDefault();
+      setContactBericht("");
+      const tekst = (link.searchParams.get("subject") || "").toLowerCase();
+      setContactOnderwerp(/storing|defect/.test(tekst) ? "Storing of defect" : /nieuws|mededeling/.test(tekst) ? "Nieuws of mededeling" : /activiteit/.test(tekst) ? "Activiteit voorstellen" : "Algemene vraag");
+      setPage("contact");
+    }
+    document.addEventListener("click", openContact, true);
+    return () => document.removeEventListener("click", openContact, true);
+  }, []);
 
   function goTo(target, filter) {
     setPage(target);
@@ -46,7 +76,7 @@ export default function App() {
       <ToegangsBalk />
       <Header page={page} goTo={goTo} />
       <main id="hoofdinhoud">
-        <Pagina goTo={goTo} initialFilter={newsFilter} />
+        <Pagina goTo={goTo} initialFilter={newsFilter} contactOnderwerp={contactOnderwerp} contactBericht={contactBericht} />
       </main>
       <Footer goTo={goTo} />
     </>
